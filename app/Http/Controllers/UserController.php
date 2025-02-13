@@ -11,6 +11,6 @@ class UserController extends Controller
     public function showProfilePage()
     {
         $user = Auth::user();
-        return view('profile', compact('user'));
+        return view('user.profile', compact('user'));
     }
 }

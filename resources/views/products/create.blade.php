@@ -50,7 +50,7 @@
                         <label for="weight" class="sr-only">Количество</label>
                         <input id="weight" name="weight" type="number" required
                                class="appearance-none rounded-lg block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
-                               placeholder="Вес">
+                               placeholder="Вес, объём и т.д.">
                     </div>
                     <div>
                         <label for="description" class="sr-only">Описание</label>

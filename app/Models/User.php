@@ -46,4 +46,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Добавляем связи "многие ко многим" между пользователями и продуктами.
+    public function cart()
+    {
+        return $this->belongsToMany(Product::class, 'user_products')
+            ->withPivot('amount')
+            ->withTimestamps();
+    }
 }

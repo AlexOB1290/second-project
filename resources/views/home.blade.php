@@ -26,9 +26,12 @@
                     <h2 class="text-lg font-semibold mt-2">{{ $product->name }}</h2>
                     <p class="text-gray-600 mt-1 text-sm">{{ $product->description }}</p>
                     <p class="text-red-500 font-bold mt-2">{{ $product->price }} ₽</p>
-                    <a href="{{ route('menu') }}" class="block text-center mt-3 bg-red-600 text-white px-4 py-2 rounded-lg text-sm">
-                        Заказать
-                    </a>
+                        <form action="{{ route('cart.add', $product->id) }}" method="POST" class="mt-3 w-full">
+                            @csrf
+                            <button type="submit" class="w-full bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition">
+                                Добавить в корзину
+                            </button>
+                        </form>
                 </div>
             @endforeach
         </div>

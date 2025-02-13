@@ -25,4 +25,12 @@ class Product extends Model
         'price' => 'float',
         'amount' => 'integer',
     ];
+
+    // Добавляем связи "многие ко многим" между пользователями и продуктами.
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_products')
+            ->withPivot('amount')
+            ->withTimestamps();
+    }
 }
