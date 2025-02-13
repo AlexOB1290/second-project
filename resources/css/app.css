@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header {
+    @apply bg-white shadow-md fixed w-full top-0 z-50 px-4 py-2;
+}
+
+.header-content {
+    @apply max-w-7xl mx-auto flex justify-between items-center;
+}
+
+.header-left {
+    @apply flex items-center gap-4;
+}
+
+.mobile-menu-btn {
+    @apply hidden;
+}
+
+.logo {
+    @apply text-2xl font-bold text-gray-800 no-underline;
+}
+
+.nav-links {
+    @apply hidden md:flex gap-8;
+}
+
+.nav-links a {
+    @apply text-gray-700 hover:text-red-600 font-medium no-underline;
+}
+
+.search-bar {
+    @apply flex gap-4;
+}
+
+.search-bar input {
+    @apply px-4 py-2 border border-gray-300 rounded-lg w-48 md:w-64;
+}
+
+.login-btn {
+    @apply bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700;
+}
+
+.sidebar {
+    @apply fixed left-0 top-0 w-64 h-full bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-50 md:translate-x-0 md:top-16;
+}
+
+.sidebar.active {
+    @apply translate-x-0;
+}
+
+.sidebar-header {
+    @apply flex justify-between items-center p-4 md:hidden;
+}
+
+.close-sidebar {
+    @apply text-2xl font-bold cursor-pointer md:hidden;
+}
+
+.menu-list {
+    @apply list-none p-4;
+}
+
+.menu-list li {
+    @apply mb-4;
+}
+
+.menu-list a {
+    @apply text-gray-700 hover:text-red-600 font-medium no-underline block;
+}
+
+.main-content {
+    @apply mt-16 md:ml-64 p-4;
+}
+
+.info-bar {
+    @apply fixed bottom-0 left-0 md:left-64 right-0 bg-white shadow-lg p-4 flex flex-col md:flex-row justify-around items-center text-sm;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        @apply flex flex-col justify-center items-center w-8 h-8 cursor-pointer;
+    }
+
+    .mobile-menu-btn span {
+        @apply w-6 h-0.5 bg-gray-800 mb-1;
+    }
+
+    .header-content {
+        @apply flex-wrap;
+    }
+
+    .search-bar {
+        @apply w-full mt-2 justify-center;
+    }
+}
