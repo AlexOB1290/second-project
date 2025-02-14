@@ -9,6 +9,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -48,8 +49,8 @@ Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 Route::post('/cart/remove/{product}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
 // Обработчик логина → переносит корзину из сессии в БД
-Auth::loginUsingId(1); // Пример входа
-app(CartController::class)->mergeCart();
+//Auth::loginUsingId(1); // Пример входа
+//app(CartController::class)->mergeCart();
 
 // Бронирование
 Route::get('/reservation', [ReservationController::class, 'create'])->name('reservation');
@@ -85,3 +86,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 });
 Route::get('/', [ProductController::class, 'getAll'])->name('home');
+
+// Оформление заказов
+Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');

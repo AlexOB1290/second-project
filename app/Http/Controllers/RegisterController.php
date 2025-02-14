@@ -34,8 +34,6 @@ class RegisterController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        //Auth::login($user);
-
         return redirect()->route('login')->with('success', 'Регистрация успешна! Войдите в аккаунт.');
     }
 }

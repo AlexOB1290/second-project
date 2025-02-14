@@ -53,9 +53,9 @@
     document.addEventListener('DOMContentLoaded', function () {
         // Проверяем, что ошибка возникла
         @if ($errors->has('email') || $errors->has('password'))
-        @if (!Request::routeIs('login') && !Request::routeIs('register'))  // Убедитесь, что это не страница входа и не страница регистрации
-        openModal(); // Открываем модалку только если это не страница входа или регистрации
-        @endif
+            @if (!Request::routeIs('login') && !Request::routeIs('register'))  // Убедитесь, что это не страница входа и не страница регистрации
+                openModal(); // Открываем модалку только если это не страница входа или регистрации
+            @endif
         @endif
     });
 

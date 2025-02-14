@@ -28,6 +28,7 @@ class CartController extends Controller
                 $cart[$product->id]['amount']++;
             } else {
                 $cart[$product->id] = [
+                    "product_id" => $product->id,
                     "name" => $product->name,
                     "price" => $product->price,
                     "amount" => 1,
@@ -44,9 +45,11 @@ class CartController extends Controller
     public function showCart()
     {
         if (Auth::check()) {
-            $cart = Auth::user()->cart()->get();
+            // Для авторизованных пользователей корзина хранится в базе данных
+            $cart = collect(Auth::user()->cart()->get()); // Преобразуем в коллекцию
         } else {
-            $cart = session()->get('cart', []);
+            // Для неавторизованных пользователей корзина хранится в сессии
+            $cart = session()->get('cart', []); // Получаем массив из сессии, не преобразуем его в коллекцию
         }
 
         return view('cart.index', compact('cart'));
@@ -66,28 +69,5 @@ class CartController extends Controller
         }
 
         return redirect()->back()->with('success', 'Товар удалён из корзины!');
-    }
-
-    // ✅ Перенос корзины из сессии в БД после логина
-    public function mergeCart()
-    {
-        if (!Auth::check()) {
-            return;
-        }
-
-        $user = Auth::user();
-        $sessionCart = session()->get('cart', []);
-
-        foreach ($sessionCart as $id => $cartItem) {
-            $existing = $user->cart()->where('product_id', $id)->first();
-
-            if ($existing) {
-                $user->cart()->updateExistingPivot($id, ['amount' => $existing->pivot->amount + $cartItem['amount']]);
-            } else {
-                $user->cart()->attach($id, ['amount' => $cartItem['amount']]);
-            }
-        }
-
-        session()->forget('cart');
     }
 }

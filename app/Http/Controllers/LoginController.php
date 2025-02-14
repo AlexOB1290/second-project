@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    protected $cartService;
+
+    public function __construct(CartService $cartService)
+    {
+        $this->cartService = $cartService; // Инъекция зависимости
+    }
     //Показать форму логина
     public function showLoginForm()
     {
@@ -23,6 +30,8 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
+
+            $this->cartService->mergeCart();
 
             return redirect()->intended('/');
         }
