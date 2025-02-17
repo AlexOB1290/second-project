@@ -38,25 +38,25 @@
                     <div class="md:col-span-2 bg-gray-50 p-6 rounded-lg">
                         <h3 class="text-lg font-semibold mb-4">История заказов</h3>
                         <div class="space-y-4">
-{{--                            @forelse($orders as $order)--}}
-{{--                                <div class="border-b border-gray-200 pb-4">--}}
-{{--                                    <div class="flex justify-between items-start">--}}
-{{--                                        <div>--}}
-{{--                                            <p class="font-medium">Заказ #{{ $order->id }}</p>--}}
-{{--                                            <p class="text-sm text-gray-600">{{ $order->created_at->format('d.m.Y H:i') }}</p>--}}
-{{--                                            <p class="text-sm">Статус: <span class="font-medium">{{ $order->status }}</span></p>--}}
-{{--                                        </div>--}}
-{{--                                        <p class="font-medium">{{ number_format($order->total, 0, '.', ' ') }} ₽</p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="mt-2">--}}
-{{--                                        <a href="{{ route('orders.show', $order) }}" class="text-red-600 hover:text-red-500 text-sm">--}}
-{{--                                            Подробнее →--}}
-{{--                                        </a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            @empty--}}
-{{--                                <p class="text-gray-500">У вас пока нет заказов</p>--}}
-{{--                            @endforelse--}}
+                            @forelse($orders as $order)
+                                <div class="border-b border-gray-200 pb-4">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <p class="font-medium">Заказ № {{ $order->order_number }}</p>
+                                            <p class="text-sm text-gray-600">{{ $order->created_at->format('d.m.Y H:i') }}</p>
+                                            <p class="text-sm">Статус: <span class="font-medium">{{ $order->status }}</span></p>
+                                        </div>
+                                        <p class="font-medium">{{ number_format($order->total_price, 2, '.', ' ') }} ₽</p>
+                                    </div>
+                                    <div class="mt-2">
+                                        <a href="{{ route('orders', $order) }}" class="text-red-600 hover:text-red-500 text-sm">
+                                            Подробнее →
+                                        </a>
+                                    </div>
+                                </div>
+                            @empty
+                                <p class="text-gray-500">У вас пока нет заказов</p>
+                            @endforelse
                         </div>
                     </div>
                 </div>

@@ -90,4 +90,4 @@ Route::get('/', [ProductController::class, 'getAll'])->name('home');
 // Оформление заказов
 Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
 Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
-Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+Route::get('/orders', [OrderController::class, 'show'])->name('orders');

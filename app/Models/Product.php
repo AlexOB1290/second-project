@@ -33,4 +33,14 @@ class Product extends Model
             ->withPivot('amount')
             ->withTimestamps();
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'product_categories');
+    }
+
+    public function ingredients()
+    {
+        return $this->belongsToMany(Ingredient::class, 'product_ingredients');
+    }
 }

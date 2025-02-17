@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,6 +12,7 @@ class UserController extends Controller
     public function showProfilePage()
     {
         $user = Auth::user();
-        return view('user.profile', compact('user'));
+        $orders = $user->orders;
+        return view('user.profile', compact('user', 'orders'));
     }
 }
