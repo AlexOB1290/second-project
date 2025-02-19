@@ -13,6 +13,7 @@ use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', [HomeController::class, 'showHomePage'])->name('home');
 
 // Меню promotions.daily
@@ -64,12 +65,12 @@ Route::get('/menu/category/{category}', [MenuController::class, 'category'])->na
 Route::get('/menu/item/{item}', [MenuController::class, 'show'])->name('menu.item');
 
 // Акции
-Route::get('/promotions', [PromotionController::class, 'index'])->name('promotions');
-Route::get('/promotions/{promotion}', [PromotionController::class, 'show'])->name('promotions.show');
-
-// Контакты
-Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
-Route::post('/contacts/message', [ContactController::class, 'sendMessage'])->name('contacts.message');
+//Route::get('/promotions', [PromotionController::class, 'index'])->name('promotions');
+//Route::get('/promotions/{promotion}', [PromotionController::class, 'show'])->name('promotions.show');
+//
+//// Контакты
+//Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
+//Route::post('/contacts/message', [ContactController::class, 'sendMessage'])->name('contacts.message');
 
 // Бронирование
 Route::get('/reservation', [ReservationController::class, 'create'])->name('reservation');

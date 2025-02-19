@@ -21,6 +21,9 @@
             <a href="{{ route('home') }}" class="logo">Ваше Кафе</a>
         </div>
         <nav class="nav-links">
+            @if(Auth::check() && Auth::user()->hasRole('admin'))
+                <a href="{{ route('admin.dashboard') }}">Админ-панель</a>
+            @endif
             <a href="{{-- route('menu') --}}">Меню</a>
             <a href="{{-- route('about') --}}">О нас</a>
             <a href="{{-- route('contacts') --}}">Контакты</a>

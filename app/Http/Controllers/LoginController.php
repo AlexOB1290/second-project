@@ -36,6 +36,8 @@ class LoginController extends Controller
             return redirect()->intended('/');
         }
 
+
+
         return back()->withErrors([
             'email' => 'Неверный логин или пароль.',
         ])->withInput($request->only('email', 'remember'));
@@ -50,5 +52,17 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        // Проверяем, есть ли у пользователя роль 'admin'
+        if ($user->roles->contains('name', 'admin')) {
+            // Перенаправляем на админскую панель
+            return redirect('/admin');
+        }
+
+        // Иначе перенаправляем на главную страницу
+        return redirect('/home');
     }
 }

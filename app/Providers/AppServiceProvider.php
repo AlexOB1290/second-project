@@ -6,7 +6,6 @@ use App\Services\OrderService;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Product;
 
 class AppServiceProvider extends ServiceProvider
 {
